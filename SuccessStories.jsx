@@ -89,7 +89,7 @@ const SuccessStories = () => {
       role: newFeedback.role || 'Not specified',
       rating: `${newFeedback.rating} Star`,
       comment: newFeedback.comment,
-      time: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+      time: new Date().toLocaleString(),
     }
 
     try {
