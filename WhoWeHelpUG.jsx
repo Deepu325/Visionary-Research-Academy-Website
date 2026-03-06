@@ -19,7 +19,7 @@ const WhoWeHelpUG = () => {
 
     return (
         <div className="page-container">
-            <section className="section hero-banner-lite" style={{ backgroundImage: 'url("/images/undergrad.png")' }}>
+            <section className="section hero-banner-lite" style={{ backgroundImage: 'url("/images/custom_img_7.png")' }}>
                 <div className="hero-banner-lite-overlay" />
                 <div className="container">
                     <div className="hero-split">
@@ -38,7 +38,7 @@ const WhoWeHelpUG = () => {
                             animate={{ opacity: 1, scale: 1 }}
                             className="hero-split-image"
                         >
-                            <img src="/images/undergrad.png" alt="Undergraduate Success" className="split-img" />
+                            <img src="/images/custom_img_7.png" alt="Undergraduate Success" className="split-img" />
                         </motion.div>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ const Home = () => {
       title: "Undergraduate",
       path: "/who-we-help/ug",
       text: "Foundation support for your first major research project.",
-      image: "/images/undergrad.png"
+      image: "/images/custom_img_7.png"
     },
     {
       title: "Postgraduate",
@@ -40,13 +40,13 @@ const Home = () => {
       title: "Data Analysis",
       path: "/services",
       text: "Transforming raw data into insights using SPSS, R, Python and more.",
-      image: "/images/custom_img_4.png"
+      image: "/images/custom_img_1.png"
     },
     {
       title: "Research Publication",
       path: "/services",
       text: "Expert guidance for submissions to Scopus, UGC-CARE, and IEEE journals.",
-      image: "/images/custom_img_6.png"
+      image: "/images/custom_img_4.png"
     }
   ]
 

@@ -36,7 +36,7 @@ const Services = () => {
     {
       title: "Data Analysis & Interpretation",
       icon: <BarChart2 size={32} />,
-      image: "/images/custom_img_2.png",
+      image: "/images/custom_img_1.png",
       desc: "Our experts transform raw data into insights. Tools supported: SPSS, AMOS, SmartPLS, R, Python, Excel.",
       items: [
         "Data cleaning and preparation",
@@ -62,7 +62,7 @@ const Services = () => {
     {
       title: "Research Paper & Publication",
       icon: <Globe size={32} />,
-      image: "/images/custom_img_1.png",
+      image: "/images/custom_img_4.png",
       desc: "Drafting and submitting papers to Scopus, UGC-CARE, IEEE, and peer-reviewed journals with formatting compliance.",
       items: [
         "Research paper drafting and editing",
