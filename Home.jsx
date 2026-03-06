@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, ShieldCheck, Clock, FileText, AlertCircle, CheckCircle } from 'lucide-react'
-import { cloudinaryUrl } from './src/utils/cloudinaryUtils.js'
-import OptimizedImage from './src/components/OptimizedImage.jsx'
 
 const Home = () => {
   const painPoints = [
@@ -18,44 +16,44 @@ const Home = () => {
       title: "Undergraduate",
       path: "/who-we-help/ug",
       text: "Foundation support for your first major research project.",
-      image: "vra/undergrad.png"
+      image: "/images/undergrad.png"
     },
     {
       title: "Postgraduate",
       path: "/who-we-help/pg",
       text: "Advanced guidance for Master's level dissertations.",
-      image: "vra/postgrad.png"
+      image: "/images/postgrad.png"
     },
     {
       title: "PhD Researchers",
       path: "/who-we-help/phd",
       text: "Strategic mentorship for doctoral excellence.",
-      image: "vra/phd.png"
+      image: "/images/phd.png"
     },
     {
       title: "Thesis & Dissertation",
       path: "/services",
       text: "Complete academic support from initial stage to final submission.",
-      image: "vra/success_banner.png"
+      image: "/images/success_banner.png"
     },
     {
       title: "Data Analysis",
       path: "/services",
       text: "Transforming raw data into insights using SPSS, R, Python and more.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+      image: "/images/custom_img_4.png"
     },
     {
       title: "Research Publication",
       path: "/services",
       text: "Expert guidance for submissions to Scopus, UGC-CARE, and IEEE journals.",
-      image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=800"
+      image: "/images/custom_img_6.png"
     }
   ]
 
   return (
     <div className="home-container">
       {/* Hero Section */}
-      <section className="hero-banner" style={{ backgroundImage: `url(${cloudinaryUrl('vra/hero.png', { width: 1920 })})` }}>
+      <section className="hero-banner" style={{ backgroundImage: 'url("/images/hero.png")' }}>
         <div className="hero-banner-overlay" />
         <div className="container hero-banner-content">
           <motion.div
@@ -132,7 +130,7 @@ const Home = () => {
                 className="premium-card level-card-img"
               >
                 <div className="level-img-wrapper">
-                  <OptimizedImage {...(level.image.startsWith('http') ? { src: level.image } : { imagePath: level.image })} alt={level.title} className="level-thumbnail" />
+                  <img src={level.image} alt={level.title} className="level-thumbnail" />
                 </div>
                 <div className="level-card-content">
                   <h3 className="serif">{level.title}</h3>

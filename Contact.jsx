@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Mail, Phone, MessageSquare, MapPin, Send } from 'lucide-react'
-import { cloudinaryUrl } from './src/utils/cloudinaryUtils.js'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +18,7 @@ const Contact = () => {
 
   return (
     <div className="page-container" style={{ paddingTop: 0 }}>
-      <section className="hero-banner" style={{ backgroundImage: `url(${cloudinaryUrl('vra/process_banner.png', { width: 1920 })})` }}>
+      <section className="hero-banner" style={{ backgroundImage: 'url("/images/process_banner.png")' }}>
         <div className="hero-banner-overlay" />
         <div className="container hero-banner-content">
           <motion.div

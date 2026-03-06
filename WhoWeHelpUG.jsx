@@ -1,8 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle, BookOpen, Target, Award } from 'lucide-react'
-import { cloudinaryUrl } from './src/utils/cloudinaryUtils.js'
-import OptimizedImage from './src/components/OptimizedImage.jsx'
 
 const WhoWeHelpUG = () => {
     const challenges = [
@@ -21,7 +19,7 @@ const WhoWeHelpUG = () => {
 
     return (
         <div className="page-container">
-            <section className="section hero-banner-lite" style={{ backgroundImage: `url(${cloudinaryUrl('vra/undergrad.png', { width: 1920 })})` }}>
+            <section className="section hero-banner-lite" style={{ backgroundImage: 'url("/images/undergrad.png")' }}>
                 <div className="hero-banner-lite-overlay" />
                 <div className="container">
                     <div className="hero-split">
@@ -40,7 +38,7 @@ const WhoWeHelpUG = () => {
                             animate={{ opacity: 1, scale: 1 }}
                             className="hero-split-image"
                         >
-                            <OptimizedImage imagePath="vra/undergrad.png" alt="Undergraduate Success" className="split-img" layout="half" />
+                            <img src="/images/undergrad.png" alt="Undergraduate Success" className="split-img" />
                         </motion.div>
                     </div>
                 </div>

@@ -16,15 +16,13 @@ import {
   ClipboardList,
   Cpu
 } from 'lucide-react'
-import { cloudinaryUrl } from './src/utils/cloudinaryUtils.js'
-import OptimizedImage from './src/components/OptimizedImage.jsx'
 
 const Services = () => {
   const categories = [
     {
       title: "Thesis & Dissertation Guidance",
       icon: <GraduationCap size={32} />,
-      image: "vra/success_banner.png",
+      image: "/images/success_banner.png",
       desc: "Complete academic support from initial stage to final submission. We ensure clarity, originality, and academic rigor throughout.",
       items: [
         "Topic selection and problem identification",
@@ -38,7 +36,7 @@ const Services = () => {
     {
       title: "Data Analysis & Interpretation",
       icon: <BarChart2 size={32} />,
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+      image: "/images/custom_img_2.png",
       desc: "Our experts transform raw data into insights. Tools supported: SPSS, AMOS, SmartPLS, R, Python, Excel.",
       items: [
         "Data cleaning and preparation",
@@ -51,7 +49,7 @@ const Services = () => {
     {
       title: "Synopsis & Proposal Writing",
       icon: <ClipboardList size={32} />,
-      image: "vra/process_banner.png",
+      image: "/images/process_banner.png",
       desc: "Professional support to clearly present research objectives, scope, and methodology aligned with university guidelines.",
       items: [
         "Research topic finalization",
@@ -64,7 +62,7 @@ const Services = () => {
     {
       title: "Research Paper & Publication",
       icon: <Globe size={32} />,
-      image: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=800",
+      image: "/images/custom_img_1.png",
       desc: "Drafting and submitting papers to Scopus, UGC-CARE, IEEE, and peer-reviewed journals with formatting compliance.",
       items: [
         "Research paper drafting and editing",
@@ -78,7 +76,7 @@ const Services = () => {
     {
       title: "Training & Workshops",
       icon: <Users size={32} />,
-      image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800",
+      image: "/images/custom_img_3.png",
       desc: "Skill-building programs for institutions and scholars focused on methodology, writing, and analytical tools.",
       items: [
         "Research methodology training",
@@ -90,7 +88,7 @@ const Services = () => {
     {
       title: "Editing & Proofreading",
       icon: <Edit3 size={32} />,
-      image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800",
+      image: "/images/custom_img_5.png",
       desc: "Enhancing clarity and readability while ensuring language accuracy and zero structural defects.",
       items: [
         "Grammar and language correction",
@@ -102,7 +100,7 @@ const Services = () => {
     {
       title: "End-to-End Academic Support",
       icon: <ShieldCheck size={32} />,
-      image: "vra/hero.png",
+      image: "/images/hero.png",
       desc: "Personalized, transparent, and continuous support across all research stages with absolute confidentiality.",
       items: [
         "Personalized consultation sessions",
@@ -139,7 +137,7 @@ const Services = () => {
   return (
     <div className="page-container" style={{ paddingTop: 0 }}>
       {/* Hero Banner */}
-      <section className="hero-banner" style={{ backgroundImage: `url(${cloudinaryUrl('vra/hero.png', { width: 1920 })})` }}>
+      <section className="hero-banner" style={{ backgroundImage: 'url("/images/hero.png")' }}>
         <div className="hero-banner-overlay" />
         <div className="container hero-banner-content">
           <motion.div
@@ -186,7 +184,7 @@ const Services = () => {
               >
                 <div className="service-card premium-card">
                   <div className="service-card-image">
-                    <OptimizedImage {...(cat.image.startsWith('http') ? { src: cat.image } : { imagePath: cat.image })} alt={cat.title} />
+                    <img src={cat.image} alt={cat.title} />
                     <div className="service-card-overlay"></div>
                     <div className="service-icon-badge">
                       {cat.icon}
