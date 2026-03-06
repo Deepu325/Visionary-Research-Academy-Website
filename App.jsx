@@ -11,10 +11,12 @@ import WhyTrustUs from './WhyTrustUs'
 import PricingPhilosophy from './PricingPhilosophy'
 import SuccessStories from './SuccessStories'
 import Contact from './Contact'
+import ScrollToTop from './ScrollToTop'
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Header />
         <main>
