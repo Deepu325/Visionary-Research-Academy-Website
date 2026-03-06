@@ -19,7 +19,7 @@ const WhoWeHelpPhD = () => {
 
     return (
         <div className="page-container">
-            <section className="section hero-banner-lite" style={{ backgroundImage: 'url("/images/phd.png")' }}>
+            <section className="section hero-banner-lite" style={{ backgroundImage: 'url("/images/custom_img_2.png")' }}>
                 <div className="hero-banner-lite-overlay" />
                 <div className="container">
                     <div className="hero-split">
@@ -38,7 +38,7 @@ const WhoWeHelpPhD = () => {
                             animate={{ opacity: 1, scale: 1 }}
                             className="hero-split-image"
                         >
-                            <img src="/images/phd.png" alt="PhD Excellence" className="split-img" />
+                            <img src="/images/custom_img_2.png" alt="PhD Excellence" className="split-img" />
                         </motion.div>
                     </div>
                 </div>

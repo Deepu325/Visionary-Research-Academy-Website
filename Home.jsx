@@ -28,7 +28,7 @@ const Home = () => {
       title: "PhD Researchers",
       path: "/who-we-help/phd",
       text: "Strategic mentorship for doctoral excellence.",
-      image: "/images/phd.png"
+      image: "/images/custom_img_2.png"
     },
     {
       title: "Thesis & Dissertation",
