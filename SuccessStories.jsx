@@ -1,6 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Award, Target, BookOpen, Quote, Star, User, MessageSquare, Send } from 'lucide-react'
+import { Award, Target, BookOpen, Quote, Star, User, MessageSquare, Send, CheckCircle, AlertCircle, Loader } from 'lucide-react'
+import emailjs from '@emailjs/browser'
+
+// ─── EmailJS Config ───────────────────────────────────────────────────────────
+// 1. Go to https://emailjs.com → Create account → Add Email Service
+// 2. Create a Template with variables: {{name}}, {{role}}, {{rating}}, {{comment}}
+// 3. Copy your IDs below
+const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'   // e.g. 'service_abc123'
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'  // e.g. 'template_xyz456'
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'   // e.g. 'abcDEFghiJKL'
+
+// ─── Google Sheets Config ─────────────────────────────────────────────────────
+// Deploy a Google Apps Script as a web app (see README or artifact for instructions)
+// Paste the deployment URL below
+const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL'
 
 const SuccessStories = () => {
   const stats = [
@@ -61,12 +75,49 @@ const SuccessStories = () => {
     rating: 5
   })
 
-  const handleFeedbackSubmit = (e) => {
+  const formRef = useRef()
+  const [submitStatus, setSubmitStatus] = useState(null) // null | 'loading' | 'success' | 'error'
+
+  const handleFeedbackSubmit = async (e) => {
     e.preventDefault()
-    if (newFeedback.name && newFeedback.comment) {
-      setFeedbacks([newFeedback, ...feedbacks])
+    if (!newFeedback.name || !newFeedback.comment) return
+
+    setSubmitStatus('loading')
+
+    const templateParams = {
+      name: newFeedback.name,
+      role: newFeedback.role || 'Not specified',
+      rating: `${newFeedback.rating} Star`,
+      comment: newFeedback.comment,
+      time: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+    }
+
+    try {
+      // ── Send to EmailJS ──────────────────────────────────────────────────
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      )
+
+      // ── Send to Google Sheets ────────────────────────────────────────────
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',   // Google Apps Script doesn't support CORS preflight
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(templateParams),
+      })
+
+      // ── Success ──────────────────────────────────────────────────────────
+      setFeedbacks([{ ...newFeedback }, ...feedbacks])
       setNewFeedback({ name: '', role: '', comment: '', rating: 5 })
-      alert("Thank you for your valuable feedback!")
+      setSubmitStatus('success')
+      setTimeout(() => setSubmitStatus(null), 4000)
+    } catch (err) {
+      console.error('Feedback submission error:', err)
+      setSubmitStatus('error')
+      setTimeout(() => setSubmitStatus(null), 4000)
     }
   }
 
@@ -213,7 +264,7 @@ const SuccessStories = () => {
               viewport={{ once: true }}
               className="premium-card feedback-form-card"
             >
-              <form onSubmit={handleFeedbackSubmit} className="feedback-form">
+              <form ref={formRef} onSubmit={handleFeedbackSubmit} className="feedback-form">
                 <div className="form-row">
                   <div className="form-group flex-1">
                     <label>Your Name</label>
@@ -256,8 +307,29 @@ const SuccessStories = () => {
                     onChange={(e) => setNewFeedback({ ...newFeedback, comment: e.target.value })}
                   ></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary w-full">
-                  Post Feedback <Send size={16} className="ml-2" />
+
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <div className="submit-status success">
+                    <CheckCircle size={18} /> Thank you! Your feedback has been recorded.
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="submit-status error">
+                    <AlertCircle size={18} /> Submission failed. Please try again.
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  className="btn btn-primary w-full"
+                  disabled={submitStatus === 'loading'}
+                >
+                  {submitStatus === 'loading' ? (
+                    <><Loader size={16} className="ml-2 spin" /> Submitting...</>
+                  ) : (
+                    <>Post Feedback <Send size={16} className="ml-2" /></>
+                  )}
                 </button>
               </form>
             </motion.div>
@@ -373,6 +445,28 @@ const SuccessStories = () => {
           .feedback-form-card { order: 1; }
           .form-row { flex-direction: column; gap: 0; }
         }
+        .submit-status {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 14px 18px;
+          border-radius: 10px;
+          font-size: 0.95rem;
+          font-weight: 500;
+          margin-bottom: 16px;
+        }
+        .submit-status.success {
+          background: #f0fdf4;
+          color: #16a34a;
+          border: 1px solid #bbf7d0;
+        }
+        .submit-status.error {
+          background: #fef2f2;
+          color: #dc2626;
+          border: 1px solid #fecaca;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .spin { animation: spin 0.8s linear infinite; }
       `}</style>
     </div>
   )
