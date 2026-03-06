@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Award, Target, BookOpen, Quote, Star, User, MessageSquare, Send } from 'lucide-react'
+import { cloudinaryUrl } from './src/utils/cloudinaryUtils.js'
 
 const SuccessStories = () => {
   const stats = [
@@ -73,7 +74,7 @@ const SuccessStories = () => {
   return (
     <div className="page-container" style={{ paddingTop: 0 }}>
       {/* Hero Section */}
-      <section className="hero-banner" style={{ backgroundImage: 'url("/images/success_banner.png")' }}>
+      <section className="hero-banner" style={{ backgroundImage: `url(${cloudinaryUrl('vra/success_banner.png', { width: 1920 })})` }}>
         <div className="hero-banner-overlay" />
         <div className="container hero-banner-content">
           <motion.div

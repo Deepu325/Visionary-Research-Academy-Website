@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, ShieldCheck, Clock, FileText, AlertCircle, CheckCircle } from 'lucide-react'
+import { cloudinaryUrl } from './src/utils/cloudinaryUtils.js'
+import OptimizedImage from './src/components/OptimizedImage.jsx'
 
 const Home = () => {
   const painPoints = [
@@ -16,25 +18,25 @@ const Home = () => {
       title: "Undergraduate",
       path: "/who-we-help/ug",
       text: "Foundation support for your first major research project.",
-      image: "/images/undergrad.png"
+      image: "vra/undergrad.png"
     },
     {
       title: "Postgraduate",
       path: "/who-we-help/pg",
       text: "Advanced guidance for Master's level dissertations.",
-      image: "/images/postgrad.png"
+      image: "vra/postgrad.png"
     },
     {
       title: "PhD Researchers",
       path: "/who-we-help/phd",
       text: "Strategic mentorship for doctoral excellence.",
-      image: "/images/phd.png"
+      image: "vra/phd.png"
     },
     {
       title: "Thesis & Dissertation",
       path: "/services",
       text: "Complete academic support from initial stage to final submission.",
-      image: "/images/success_banner.png"
+      image: "vra/success_banner.png"
     },
     {
       title: "Data Analysis",
@@ -53,7 +55,7 @@ const Home = () => {
   return (
     <div className="home-container">
       {/* Hero Section */}
-      <section className="hero-banner" style={{ backgroundImage: 'url("/images/hero.png")' }}>
+      <section className="hero-banner" style={{ backgroundImage: `url(${cloudinaryUrl('vra/hero.png', { width: 1920 })})` }}>
         <div className="hero-banner-overlay" />
         <div className="container hero-banner-content">
           <motion.div
@@ -130,7 +132,7 @@ const Home = () => {
                 className="premium-card level-card-img"
               >
                 <div className="level-img-wrapper">
-                  <img src={level.image} alt={level.title} className="level-thumbnail" />
+                  <OptimizedImage {...(level.image.startsWith('http') ? { src: level.image } : { imagePath: level.image })} alt={level.title} className="level-thumbnail" />
                 </div>
                 <div className="level-card-content">
                   <h3 className="serif">{level.title}</h3>

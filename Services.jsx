@@ -16,13 +16,15 @@ import {
   ClipboardList,
   Cpu
 } from 'lucide-react'
+import { cloudinaryUrl } from './src/utils/cloudinaryUtils.js'
+import OptimizedImage from './src/components/OptimizedImage.jsx'
 
 const Services = () => {
   const categories = [
     {
       title: "Thesis & Dissertation Guidance",
       icon: <GraduationCap size={32} />,
-      image: "/images/success_banner.png",
+      image: "vra/success_banner.png",
       desc: "Complete academic support from initial stage to final submission. We ensure clarity, originality, and academic rigor throughout.",
       items: [
         "Topic selection and problem identification",
@@ -49,7 +51,7 @@ const Services = () => {
     {
       title: "Synopsis & Proposal Writing",
       icon: <ClipboardList size={32} />,
-      image: "/images/process_banner.png",
+      image: "vra/process_banner.png",
       desc: "Professional support to clearly present research objectives, scope, and methodology aligned with university guidelines.",
       items: [
         "Research topic finalization",
@@ -100,7 +102,7 @@ const Services = () => {
     {
       title: "End-to-End Academic Support",
       icon: <ShieldCheck size={32} />,
-      image: "/images/hero.png",
+      image: "vra/hero.png",
       desc: "Personalized, transparent, and continuous support across all research stages with absolute confidentiality.",
       items: [
         "Personalized consultation sessions",
@@ -137,7 +139,7 @@ const Services = () => {
   return (
     <div className="page-container" style={{ paddingTop: 0 }}>
       {/* Hero Banner */}
-      <section className="hero-banner" style={{ backgroundImage: 'url("/images/hero.png")' }}>
+      <section className="hero-banner" style={{ backgroundImage: `url(${cloudinaryUrl('vra/hero.png', { width: 1920 })})` }}>
         <div className="hero-banner-overlay" />
         <div className="container hero-banner-content">
           <motion.div
@@ -184,7 +186,7 @@ const Services = () => {
               >
                 <div className="service-card premium-card">
                   <div className="service-card-image">
-                    <img src={cat.image} alt={cat.title} />
+                    <OptimizedImage {...(cat.image.startsWith('http') ? { src: cat.image } : { imagePath: cat.image })} alt={cat.title} />
                     <div className="service-card-overlay"></div>
                     <div className="service-icon-badge">
                       {cat.icon}

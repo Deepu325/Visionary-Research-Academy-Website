@@ -1,11 +1,12 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Info, HelpCircle, ShieldCheck, Clock } from 'lucide-react'
+import { cloudinaryUrl } from './src/utils/cloudinaryUtils.js'
 
 const PricingPhilosophy = () => {
     return (
         <div className="page-container" style={{ paddingTop: 0 }}>
-            <section className="hero-banner" style={{ backgroundImage: 'url("/images/hero.png")' }}>
+            <section className="hero-banner" style={{ backgroundImage: `url(${cloudinaryUrl('vra/hero.png', { width: 1920 })})` }}>
                 <div className="hero-banner-overlay" />
                 <div className="container hero-banner-content">
                     <motion.div
