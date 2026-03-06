@@ -5,8 +5,11 @@ import emailjs from '@emailjs/browser'
 
 // ─── EmailJS Config ───────────────────────────────────────────────────────────
 const EMAILJS_SERVICE_ID = 'service_abc123'
-const EMAILJS_TEMPLATE_ID = 'template_um8waur' // Use a contact-specific template if you have one
+const EMAILJS_TEMPLATE_ID = 'template_um8waur'
 const EMAILJS_PUBLIC_KEY = '9evvQw440xDHWB7Fr'
+
+// ─── Google Sheets Config ─────────────────────────────────────────────────────
+const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -33,12 +36,22 @@ const Contact = () => {
     }
 
     try {
+      // ── Send to EmailJS ──────────────────────────────────────────────────
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         templateParams,
         EMAILJS_PUBLIC_KEY
       )
+
+      // ── Send to Google Sheets ────────────────────────────────────────────
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(templateParams),
+      })
+
       setSubmitStatus('success')
       setFormData({ name: '', email: '', level: 'PhD', subject: '', message: '' })
       setTimeout(() => setSubmitStatus(null), 5000)
