@@ -21,10 +21,10 @@ const Footer = () => {
               rigorous academic support.
             </p>
             <div className="footer-social">
-              <a href="https://www.facebook.com/profile.php?id=61581296442339#" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a href="https://www.facebook.com/profile.php?id=61581296442339" target="_blank" rel="noopener noreferrer" className="social-link">
                 <Facebook size={20} />
               </a>
-              <a href="https://www.linkedin.com/in/visionary-research-academy-8a070b387?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B44OP9y5wQ6iqES8hfYXa6A%3D%3D" target="_blank" rel="noopener noreferrer" className="social-link">
+              <a href="https://www.linkedin.com/in/visionary-research-academy-8a070b387/" target="_blank" rel="noopener noreferrer" className="social-link">
                 <Linkedin size={20} />
               </a>
               <a href="https://www.instagram.com/visionaryresearchacademy/" target="_blank" rel="noopener noreferrer" className="social-link">
