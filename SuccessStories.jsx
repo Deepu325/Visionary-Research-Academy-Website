@@ -7,9 +7,9 @@ import emailjs from '@emailjs/browser'
 // 1. Go to https://emailjs.com → Create account → Add Email Service
 // 2. Create a Template with variables: {{name}}, {{role}}, {{rating}}, {{comment}}
 // 3. Copy your IDs below
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'   // e.g. 'service_abc123'
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'  // e.g. 'template_xyz456'
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'   // e.g. 'abcDEFghiJKL'
+const EMAILJS_SERVICE_ID = 'service_abc123'
+const EMAILJS_TEMPLATE_ID = 'template_um8waur'
+const EMAILJS_PUBLIC_KEY = '9evvQw440xDHWB7Fr'
 
 // ─── Google Sheets Config ─────────────────────────────────────────────────────
 // Deploy a Google Apps Script as a web app (see README or artifact for instructions)
