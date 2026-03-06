@@ -4,12 +4,12 @@ import { Mail, Phone, MessageSquare, MapPin, Send, CheckCircle, AlertCircle, Loa
 import emailjs from '@emailjs/browser'
 
 // ─── EmailJS Config ───────────────────────────────────────────────────────────
-const EMAILJS_SERVICE_ID = 'service_abc123'
-const EMAILJS_TEMPLATE_ID = 'template_um8waur'
-const EMAILJS_PUBLIC_KEY = '9evvQw440xDHWB7Fr'
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_CONTACT_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 // ─── Google Sheets Config ─────────────────────────────────────────────────────
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL'
+const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -29,17 +29,17 @@ const Contact = () => {
     const templateParams = {
       name: formData.name,
       email: formData.email,
-      role: formData.level, // mapping level to role for consistency if needed
+      role: formData.level,
       subject: formData.subject,
       message: formData.message,
-      time: new Date().toLocaleString(),
+      time: new Date().toLocaleString()
     }
 
     try {
       // ── Send to EmailJS ──────────────────────────────────────────────────
       await emailjs.send(
         EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
+        EMAILJS_CONTACT_TEMPLATE_ID,
         templateParams,
         EMAILJS_PUBLIC_KEY
       )

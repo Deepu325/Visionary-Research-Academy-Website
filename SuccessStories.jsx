@@ -7,14 +7,12 @@ import emailjs from '@emailjs/browser'
 // 1. Go to https://emailjs.com → Create account → Add Email Service
 // 2. Create a Template with variables: {{name}}, {{role}}, {{rating}}, {{comment}}
 // 3. Copy your IDs below
-const EMAILJS_SERVICE_ID = 'service_abc123'
-const EMAILJS_TEMPLATE_ID = 'template_um8waur'
-const EMAILJS_PUBLIC_KEY = '9evvQw440xDHWB7Fr'
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_FEEDBACK_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 // ─── Google Sheets Config ─────────────────────────────────────────────────────
-// Deploy a Google Apps Script as a web app (see README or artifact for instructions)
-// Paste the deployment URL below
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL'
+const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL
 
 const SuccessStories = () => {
   const stats = [
