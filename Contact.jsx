@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MessageSquare, MapPin, Send } from 'lucide-react'
+import { Mail, Phone, MessageSquare, MapPin, Send, CheckCircle, AlertCircle, Loader } from 'lucide-react'
+import emailjs from '@emailjs/browser'
+
+// ─── EmailJS Config ───────────────────────────────────────────────────────────
+const EMAILJS_SERVICE_ID = 'service_abc123'
+const EMAILJS_TEMPLATE_ID = 'template_um8waur' // Use a contact-specific template if you have one
+const EMAILJS_PUBLIC_KEY = '9evvQw440xDHWB7Fr'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,9 +17,36 @@ const Contact = () => {
     message: ''
   })
 
-  const handleSubmit = (e) => {
+  const [submitStatus, setSubmitStatus] = useState(null) // null | 'loading' | 'success' | 'error'
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    alert("Thank you. Our academic coordinator will contact you within 24 hours.")
+    setSubmitStatus('loading')
+
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      role: formData.level, // mapping level to role for consistency if needed
+      subject: formData.subject,
+      message: formData.message,
+      time: new Date().toLocaleString(),
+    }
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      )
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', level: 'PhD', subject: '', message: '' })
+      setTimeout(() => setSubmitStatus(null), 5000)
+    } catch (err) {
+      console.error('Contact form error:', err)
+      setSubmitStatus('error')
+      setTimeout(() => setSubmitStatus(null), 5000)
+    }
   }
 
   return (
@@ -50,6 +83,7 @@ const Contact = () => {
                   <input
                     type="text"
                     required
+                    value={formData.name}
                     placeholder="John Doe"
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
@@ -59,13 +93,17 @@ const Contact = () => {
                   <input
                     type="email"
                     required
+                    value={formData.email}
                     placeholder="john@university.edu"
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
                 </div>
                 <div className="form-group">
                   <label>Academic Level</label>
-                  <select onChange={(e) => setFormData({ ...formData, level: e.target.value })}>
+                  <select
+                    value={formData.level}
+                    onChange={(e) => setFormData({ ...formData, level: e.target.value })}
+                  >
                     <option>Undergraduate</option>
                     <option>Postgraduate</option>
                     <option>PhD / Doctorate</option>
@@ -77,6 +115,7 @@ const Contact = () => {
                   <label>Research Topic / Subject</label>
                   <input
                     type="text"
+                    value={formData.subject}
                     placeholder="e.g. Qualitative study in Public Health"
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   />
@@ -85,12 +124,34 @@ const Contact = () => {
                   <label>How can we help?</label>
                   <textarea
                     rows="5"
+                    value={formData.message}
                     placeholder="Tell us about your research challenges..."
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   ></textarea>
                 </div>
-                <button type="submit" className="btn btn-primary w-full">
-                  Contact Us <Send size={16} className="ml-2" />
+
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <div className="submit-status success">
+                    <CheckCircle size={18} /> Inquiry sent! We will contact you within 24 hours.
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="submit-status error">
+                    <AlertCircle size={18} /> Failed to send. Please try again or email us directly.
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  className="btn btn-primary w-full"
+                  disabled={submitStatus === 'loading'}
+                >
+                  {submitStatus === 'loading' ? (
+                    <><Loader size={16} className="ml-2 spin" /> Sending...</>
+                  ) : (
+                    <>Contact Us <Send size={16} className="ml-2" /></>
+                  )}
                 </button>
               </form>
             </motion.div>
@@ -207,6 +268,29 @@ const Contact = () => {
         @media (max-width: 768px) {
           .contact-grid { grid-template-columns: 1fr; gap: 40px; }
         }
+
+        .submit-status {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 14px 18px;
+          border-radius: 6px;
+          font-size: 0.95rem;
+          font-weight: 500;
+          margin-bottom: 20px;
+        }
+        .submit-status.success {
+          background: #f0fdf4;
+          color: #16a34a;
+          border: 1px solid #bbf7d0;
+        }
+        .submit-status.error {
+          background: #fef2f2;
+          color: #dc2626;
+          border: 1px solid #fecaca;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .spin { animation: spin 0.8s linear infinite; }
       `}</style>
     </div>
   )
