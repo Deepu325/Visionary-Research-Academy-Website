@@ -8,7 +8,6 @@ import WhoWeHelpPG from './WhoWeHelpPG'
 import WhoWeHelpPhD from './WhoWeHelpPhD'
 import Services from './Services'
 import WhyTrustUs from './WhyTrustUs'
-import PricingPhilosophy from './PricingPhilosophy'
 import SuccessStories from './SuccessStories'
 import Contact from './Contact'
 import ScrollToTop from './ScrollToTop'
@@ -27,7 +26,6 @@ function App() {
             <Route path="/who-we-help/phd" element={<WhoWeHelpPhD />} />
             <Route path="/services" element={<Services />} />
             <Route path="/why-trust-us" element={<WhyTrustUs />} />
-            <Route path="/pricing" element={<PricingPhilosophy />} />
             <Route path="/success-stories" element={<SuccessStories />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>

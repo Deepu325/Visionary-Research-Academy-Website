@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, ChevronDown, Award } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const Header = () => {
@@ -27,14 +27,13 @@ const Header = () => {
     },
     { name: 'Services', path: '/services' },
     { name: 'Success Stories', path: '/success-stories' },
-    { name: 'Pricing', path: '/pricing' },
   ]
 
   return (
     <header className={`header ${isScrolled ? 'scrolled glass' : ''}`}>
       <div className="container header-content">
         <Link to="/" className="logo">
-          <Award className="logo-icon" size={28} />
+          <img src="/images/LOGO.jpg" alt="Visionary Research Academy" className="logo-icon" />
           <div className="logo-text">
             <span className="logo-main">Visionary Research</span>
             <span className="logo-sub">Academy</span>
@@ -161,7 +160,9 @@ const Header = () => {
           color: var(--primary);
         }
         .logo-icon {
-          color: var(--secondary);
+          height: 48px;
+          width: auto;
+          object-fit: contain;
         }
         .logo-text {
           display: flex;

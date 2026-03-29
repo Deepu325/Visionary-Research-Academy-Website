@@ -19,7 +19,7 @@
   --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
 
   --font-serif: 'Crimson Pro', serif;
-  --font-sans: 'Outfit', sans-serif;
+  --font-sans: 'Inter', sans-serif;
 }
 
 * {
@@ -108,12 +108,21 @@ h4,
 }
 
 .section-subtitle {
+  font-family: var(--font-serif);
   font-size: 1.2rem;
   color: var(--text-light);
   text-align: center;
   max-width: 700px;
   margin: 0 auto 80px;
   font-weight: 400;
+}
+
+.lead {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text);
 }
 
 /* Glassmorphism Classes */

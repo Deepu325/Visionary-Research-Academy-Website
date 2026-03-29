@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, ShieldCheck, Clock, FileText, AlertCircle, CheckCircle } from 'lucide-react'
+import Certifications from './Certifications'
 
 const Home = () => {
   const painPoints = [
@@ -190,6 +191,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Certifications & Recognition */}
+      <Certifications />
 
       {/* CTA section */}
       <section className="section cta-banner">
