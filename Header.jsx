@@ -35,8 +35,8 @@ const Header = () => {
         <Link to="/" className="logo">
           <img src="/images/LOGO.jpg" alt="Visionary Research Academy" className="logo-icon" />
           <div className="logo-text">
-            <span className="logo-main">Visionary Research</span>
-            <span className="logo-sub">Academy</span>
+            <span className="logo-main">Visionary Research Academy</span>
+            <span className="logo-sub">Your Trusted Partner for Research, Thesis & Data Analytics</span>
           </div>
         </Link>
 
@@ -174,12 +174,14 @@ const Header = () => {
           font-size: 1.25rem;
           font-weight: 700;
           letter-spacing: -0.5px;
+          white-space: nowrap;
         }
         .logo-sub {
-          font-size: 0.75rem;
-          text-transform: uppercase;
-          letter-spacing: 2px;
+          font-family: var(--font-serif);
+          font-size: 0.65rem;
           color: var(--text-light);
+          letter-spacing: 0.3px;
+          line-height: 1.3;
         }
         .desktop-nav {
           display: none;
@@ -291,6 +293,11 @@ const Header = () => {
         @media (min-width: 992px) {
           .desktop-nav { display: flex; }
           .mobile-toggle { display: none; }
+        }
+        @media (max-width: 480px) {
+          .logo-main { font-size: 1rem; }
+          .logo-sub { font-size: 0.55rem; }
+          .logo-icon { height: 36px; }
         }
       `}</style>
     </header>
