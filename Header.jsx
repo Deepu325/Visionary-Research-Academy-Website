@@ -69,7 +69,7 @@ const Header = () => {
         </nav>
 
         <div className="header-ctas">
-          <Link to="/contact" className="btn btn-primary">
+          <Link to="/contact" className="btn btn-primary header-cta">
             Contact Us
           </Link>
           <button
@@ -262,7 +262,9 @@ const Header = () => {
           box-shadow: var(--shadow-lg);
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 4px;
+          max-height: calc(100vh - 80px);
+          overflow-y: auto;
         }
         .mobile-link {
           text-decoration: none;
@@ -284,7 +286,11 @@ const Header = () => {
           color: var(--text);
           padding: 10px 0 10px 16px;
           font-size: 0.95rem;
-          border-bottom: 1px solid var(--border-light);
+          border-bottom: 1px solid var(--border);
+          display: block;
+        }
+        .mobile-sublink:last-child {
+          border-bottom: none;
         }
         .mobile-cta {
           margin-top: 16px;
@@ -294,10 +300,17 @@ const Header = () => {
           .desktop-nav { display: flex; }
           .mobile-toggle { display: none; }
         }
+        @media (max-width: 992px) {
+          .header-cta { display: none; }
+          .header.scrolled { height: 60px; }
+          .logo-icon { height: 40px; }
+        }
         @media (max-width: 480px) {
-          .logo-main { font-size: 1rem; }
-          .logo-sub { font-size: 0.55rem; }
-          .logo-icon { height: 36px; }
+          .logo-main { font-size: 1.1rem; }
+          .logo-sub { font-size: 0.55rem; max-width: 180px; white-space: normal; }
+          .logo-icon { height: 32px; }
+          .mobile-menu { padding: 16px; }
+          .mobile-link { padding: 10px 0; }
         }
       `}</style>
     </header>

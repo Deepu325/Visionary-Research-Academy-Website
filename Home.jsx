@@ -65,7 +65,7 @@ const Home = () => {
             <h1 className="hero-banner-title serif">
               Visionary Research Academy
             </h1>
-            <p className="hero-banner-subtitle" style={{ fontSize: '1.5rem', fontWeight: '600', color: 'var(--accent)' }}>
+            <p className="hero-banner-subtitle home-hero-subtitle">
               Your Trusted Partner for Research, Thesis & Data Analytics
             </p>
             <div className="hero-actions" style={{ marginTop: '40px' }}>
@@ -86,7 +86,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center max-w-700 mx-auto"
           >
-            <p className="lead" style={{ fontSize: '1.4rem', color: 'var(--primary)', lineHeight: 1.8, fontWeight: '500' }}>
+            <p className="lead home-intro-text">
               Visionary Research Academy is dedicated to supporting academic excellence through expert research guidance and analytical expertise. We provide comprehensive assistance for Thesis and Dissertation work, Research Publications, and Data Analysis, helping scholars and professionals navigate complex academic challenges with confidence, precision, and integrity.
             </p>
           </motion.div>
@@ -217,7 +217,7 @@ const Home = () => {
         }
         .levels-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: 32px;
         }
         .level-card-img {
@@ -265,7 +265,32 @@ const Home = () => {
           background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
           padding: 120px 0;
         }
+        @media (max-width: 768px) {
+          .home-hero-subtitle { font-size: 1.25rem !important; }
+          .home-intro-text { font-size: 1.2rem !important; }
+          .levels-grid { grid-template-columns: 1fr; }
+          .trust-overview { gap: 32px; }
+          .cta-banner { padding: 80px 0; }
+        }
+        @media (max-width: 480px) {
+          .home-hero-subtitle { font-size: 1.1rem !important; }
+          .home-intro-text { font-size: 1.1rem !important; }
+          .level-card-content { padding: 24px; }
+          .pain-grid { grid-template-columns: 1fr; }
+          .premium-card { padding: 32px 24px; }
+        }
         .text-center { text-align: center; }
+        .home-hero-subtitle { 
+          font-size: 1.5rem; 
+          font-weight: 600; 
+          color: var(--accent); 
+        }
+        .home-intro-text {
+          font-size: 1.4rem; 
+          color: var(--primary); 
+          line-height: 1.8; 
+          font-weight: 500;
+        }
       `}</style>
     </div>
   )

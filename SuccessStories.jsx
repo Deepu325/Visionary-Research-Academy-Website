@@ -344,8 +344,8 @@ const SuccessStories = () => {
 
         .stats-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-          gap: 32px;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 24px;
           margin-bottom: 40px;
         }
         .stat-card {
@@ -359,8 +359,8 @@ const SuccessStories = () => {
         
         .stories-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-          gap: 40px;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 32px;
         }
         .story-card {
            display: flex;
@@ -438,10 +438,26 @@ const SuccessStories = () => {
         }
 
         @media (max-width: 992px) {
-          .feedback-form-container { grid-template-columns: 1fr; text-align: center; }
+          .feedback-form-container { grid-template-columns: 1fr; text-align: center; gap: 40px; }
           .feedback-form-content { order: 2; }
           .feedback-form-card { order: 1; }
           .form-row { flex-direction: column; gap: 0; }
+        }
+        @media (max-width: 768px) {
+          .stats-grid { grid-template-columns: 1fr; }
+          .stat-card { padding: 32px 20px; }
+          .stat-value { font-size: 2.5rem; }
+          .stories-grid { grid-template-columns: 1fr; }
+          .feedback-grid { grid-template-columns: 1fr; }
+          .page-container { padding-top: 70px; }
+        }
+        @media (max-width: 480px) {
+          .stat-card { padding: 24px 16px; }
+          .stat-value { font-size: 2rem; }
+          .story-card { gap: 20px; }
+          .story-quote { padding: 16px; }
+          .feedback-card { padding: 24px; }
+          .page-container { padding-top: 60px; }
         }
         .submit-status {
           display: flex;

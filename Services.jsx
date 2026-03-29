@@ -146,7 +146,7 @@ const Services = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="hero-banner-title serif">Visionary Research Academy</h1>
-            <p className="hero-banner-subtitle" style={{ fontSize: '1.5rem', fontWeight: '600', color: 'var(--accent)' }}>
+            <p className="hero-banner-subtitle services-hero-subtitle">
               Your Trusted Partner for Research, Thesis & Data Analytics
             </p>
           </motion.div>
@@ -162,7 +162,7 @@ const Services = () => {
             viewport={{ once: true }}
             className="text-center max-w-700 mx-auto"
           >
-            <p className="lead" style={{ fontSize: '1.25rem', color: 'var(--text)', lineHeight: 1.8 }}>
+            <p className="lead services-intro-text">
               Visionary Research Academy is dedicated to supporting academic excellence through expert research guidance and analytical expertise. We provide comprehensive assistance for Thesis and Dissertation work, Research Publications, and Data Analysis, helping scholars and professionals navigate complex academic challenges with confidence, precision, and integrity.
             </p>
           </motion.div>
@@ -263,7 +263,7 @@ const Services = () => {
 
         .services-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: 32px;
         }
 
@@ -418,6 +418,26 @@ const Services = () => {
         }
         @media (max-width: 768px) {
           .step-count { display: none; }
+          .services-hero-subtitle { font-size: 1.25rem !important; }
+          .services-intro-text { font-size: 1.15rem !important; }
+          .page-container { padding-top: 70px; }
+        }
+        @media (max-width: 480px) {
+          .service-card-body { padding: 32px 20px 24px; }
+          .service-title { font-size: 1.3rem; }
+          .step-card { padding: 30px 20px; }
+          .services-hero-subtitle { font-size: 1.1rem !important; }
+          .page-container { padding-top: 60px; }
+        }
+        .services-hero-subtitle {
+          font-size: 1.5rem; 
+          font-weight: 600; 
+          color: var(--accent);
+        }
+        .services-intro-text {
+          font-size: 1.25rem; 
+          color: var(--text); 
+          line-height: 1.8;
         }
       `}</style>
     </div>

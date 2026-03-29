@@ -183,6 +183,14 @@ const WhoWeHelpPG = () => {
           .hero-split { grid-template-columns: 1fr; gap: 40px; text-align: center; }
           .hero-split-text h1, .hero-split-text p { text-align: center !important; margin: 0 auto 24px !important; }
         }
+        @media (max-width: 768px) {
+          .page-container { padding-top: 70px; }
+        }
+        @media (max-width: 480px) {
+          .info-box { padding: 32px 20px; }
+          .hero-split-image { aspect-ratio: 16/11; }
+          .page-container { padding-top: 60px; }
+        }
       `}</style>
         </div>
     )

@@ -140,6 +140,7 @@ const Footer = () => {
           flex-direction: column;
           gap: 20px;
           align-items: center;
+          text-align: center;
         }
         @media (min-width: 768px) {
           .footer-bottom {
@@ -184,6 +185,14 @@ const Footer = () => {
           background: var(--secondary);
           color: #fff;
           transform: translateY(-3px);
+        }
+        @media (max-width: 480px) {
+          .footer { padding: 60px 0 30px; }
+          .footer-grid { gap: 32px; }
+          .logo-main { font-size: 1.1rem !important; }
+          .footer-title { margin-bottom: 16px; font-size: 1rem; }
+          .footer-links, .footer-contact { gap: 10px; }
+          .footer-legal { gap: 16px; flex-wrap: wrap; justify-content: center; }
         }
       `}</style>
     </footer>

@@ -280,6 +280,13 @@ const Contact = () => {
 
         @media (max-width: 768px) {
           .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+          .page-container { padding-top: 70px; }
+        }
+
+        @media (max-width: 480px) {
+          .info-card { padding: 30px 20px; }
+          .contact-form-wrapper h2 { font-size: 1.8rem; }
+          .page-container { padding-top: 60px; }
         }
 
         .submit-status {
